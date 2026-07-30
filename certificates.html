@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificates Management — NAWAH Verify Admin</title>
+<link rel="icon" href="../images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar"></aside>
+  <div class="admin-main">
+    <header class="admin-topbar" id="admin-topbar"></header>
+    <main class="admin-content">
+      <div class="panel">
+        <div class="panel-title">
+          <h3 data-i18n="certs_title"></h3>
+          <button class="btn btn-green" id="add-cert-btn"><i class="fa-solid fa-plus"></i> <span data-i18n="btn_add_cert"></span></button>
+        </div>
+        <div class="table-toolbar">
+          <input type="text" id="cert-search-input" class="input-field search-input" data-i18n-placeholder="quick_search_placeholder" placeholder="Search table...">
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-i18n="col_cert_number"></th>
+                <th data-i18n="col_student"></th>
+                <th data-i18n="col_course"></th>
+                <th data-i18n="col_instructor"></th>
+                <th data-i18n="col_issue_date"></th>
+                <th data-i18n="col_status"></th>
+                <th data-i18n="col_actions"></th>
+              </tr>
+            </thead>
+            <tbody id="certs-table-body">
+              <tr><td colspan="7" class="text-center" data-i18n="loading"></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Add / Edit Modal -->
+<div class="modal-overlay" id="cert-modal-overlay">
+  <div class="modal-box">
+    <h3 id="cert-modal-title" data-i18n="modal_add_cert"></h3>
+    <form id="cert-form">
+      <input type="hidden" id="cert-id-field">
+      <div class="form-grid">
+        <div class="form-group">
+          <label data-i18n="lbl_student_name"></label>
+          <input type="text" id="f-student-name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_cert_number"></label>
+          <input type="text" id="f-cert-number" class="form-control" placeholder="NMH-2026-000000" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_course"></label>
+          <input type="text" id="f-course-name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_instructor"></label>
+          <input type="text" id="f-instructor" class="form-control">
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_hours"></label>
+          <input type="number" id="f-hours" class="form-control" min="0">
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_status"></label>
+          <select id="f-status" class="form-control">
+            <option value="active" data-i18n="status_active"></option>
+            <option value="revoked" data-i18n="status_revoked"></option>
+            <option value="expired" data-i18n="status_expired"></option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_issue_date"></label>
+          <input type="date" id="f-issue-date" class="form-control">
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_expiry_date"></label>
+          <input type="date" id="f-expiry-date" class="form-control">
+        </div>
+        <div class="form-group span-2">
+          <label data-i18n="lbl_image"></label>
+          <input type="text" id="f-image" class="form-control" placeholder="https://...">
+        </div>
+        <div class="form-group span-2">
+          <label data-i18n="lbl_notes"></label>
+          <textarea id="f-notes" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline" id="cert-modal-cancel" data-i18n="btn_cancel"></button>
+        <button type="submit" class="btn btn-primary" data-i18n="btn_save"></button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- QR Modal -->
+<div class="modal-overlay" id="qr-modal-overlay">
+  <div class="modal-box" style="max-width:380px;text-align:center;">
+    <h3 data-i18n="btn_qr"></h3>
+    <div id="qr-modal-canvas-holder" style="margin:16px 0;"></div>
+    <p id="qr-modal-url" style="font-size:.8rem;color:var(--nawah-text-muted);word-break:break-all;"></p>
+    <div class="modal-actions" style="justify-content:center;">
+      <button class="btn btn-outline" id="qr-download-btn"><i class="fa-solid fa-download"></i> <span data-i18n="download"></span></button>
+      <button class="btn btn-primary" id="qr-modal-close" data-i18n="btn_close"></button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/certificates-admin.js"></script>
+</body>
+</html>

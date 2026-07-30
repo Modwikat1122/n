@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificate Verification — NAWAH Verify</title>
+<link rel="icon" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<style>
+  @media print {
+    .site-header, .site-footer, .cert-actions, .mobile-toggle { display:none !important; }
+    body{ background:#fff; }
+    .cert-page{ padding:0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+
+<main class="cert-page">
+  <div class="cert-wrapper">
+    <div id="cert-result-area">
+      <div class="text-center" style="padding:60px 0;">
+        <i class="fa-solid fa-circle-notch spin" style="font-size:2rem;color:var(--nawah-blue);"></i>
+        <p style="color:var(--nawah-text-muted);margin-top:14px;" data-i18n="loading"></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/common.js"></script>
+<script src="js/certificate.js"></script>
+</body>
+</html>

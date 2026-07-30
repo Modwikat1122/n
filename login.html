@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login — NAWAH Verify</title>
+<link rel="icon" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+
+<main class="auth-wrap">
+  <div class="auth-card">
+    <img src="images/logo.png" class="logo dyn-logo" alt="NAWAH Medical Academy">
+    <h1 data-i18n="login_title"></h1>
+    <p class="hint" data-i18n="login_subtitle"></p>
+
+    <div class="auth-error" id="login-error" data-i18n="login_error"></div>
+
+    <form id="login-form">
+      <div class="form-group">
+        <label for="login-username" data-i18n="lbl_username"></label>
+        <input type="text" id="login-username" class="form-control" autocomplete="username" required>
+      </div>
+      <div class="form-group">
+        <label for="login-password" data-i18n="lbl_password"></label>
+        <input type="password" id="login-password" class="form-control" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" id="login-submit-btn">
+        <i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="btn_login"></span>
+      </button>
+    </form>
+
+    <div class="demo-hint" data-i18n="demo_creds"></div>
+  </div>
+</main>
+
+<script src="js/i18n.js"></script>
+<script src="js/common.js"></script>
+<script>
+  renderSiteHeader('login.html');
+  applyDynamicBranding();
+
+  // If already logged in, go straight to dashboard
+  if (getSession()) {
+    window.location.href = 'admin/dashboard.html';
+  }
+
+  const form = document.getElementById('login-form');
+  const errorBox = document.getElementById('login-error');
+  const submitBtn = document.getElementById('login-submit-btn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorBox.style.display = 'none';
+    const username = document.getElementById('login-username').value.trim();
+    const password = document.getElementById('login-password').value;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch spin"></i> ' + nawahT('loading');
+    try {
+      const user = await attemptLogin(username, password);
+      if (user) {
+        setSession(user);
+        window.location.href = 'admin/dashboard.html';
+      } else {
+        errorBox.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="btn_login"></span>';
+        nawahApplyLang();
+      }
+    } catch (err) {
+      errorBox.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="btn_login"></span>';
+      nawahApplyLang();
+    }
+  });
+</script>
+</body>
+</html>

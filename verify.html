@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify Certificate — NAWAH Verify</title>
+<link rel="icon" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+
+<div class="page-heading">
+  <h1 data-i18n="verify_page_title"></h1>
+  <p data-i18n="verify_page_subtitle"></p>
+</div>
+
+<main class="section" style="padding-top:20px;">
+  <div class="search-card" style="max-width:560px;">
+    <p style="text-align:center;color:var(--nawah-text-muted);font-size:.9rem;margin-top:0;" data-i18n="verify_hint"></p>
+    <form id="verify-form">
+      <div class="form-group">
+        <label for="verify-cert-number" data-i18n="cert_number_label"></label>
+        <input type="text" id="verify-cert-number" class="form-control" data-i18n-placeholder="cert_number_placeholder" placeholder="e.g. NMH-2026-000001" autocomplete="off">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="btn_verify"></span></button>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/common.js"></script>
+<script>
+  renderSiteHeader('verify.html');
+  renderSiteFooter();
+
+  document.getElementById('verify-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    const val = document.getElementById('verify-cert-number').value.trim();
+    if (!val) return;
+    window.location.href = `certificate.html?number=${encodeURIComponent(val)}`;
+  });
+
+  // Support ?number= passthrough if user lands here with a query
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('number')) {
+    document.getElementById('verify-cert-number').value = params.get('number');
+  }
+</script>
+</body>
+</html>

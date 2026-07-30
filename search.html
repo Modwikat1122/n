@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Certificate — NAWAH Verify</title>
+<link rel="icon" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+
+<div class="page-heading">
+  <h1 data-i18n="search_page_title"></h1>
+  <p data-i18n="search_page_subtitle"></p>
+</div>
+
+<main class="section" style="padding-top:20px;">
+  <div class="search-card">
+    <div class="search-tabs" id="search-tabs">
+      <button class="active" data-mode="number" data-i18n="tab_by_number"></button>
+      <button data-mode="name" data-i18n="tab_by_name"></button>
+    </div>
+    <form id="search-form">
+      <div class="input-row">
+        <input type="text" id="search-input" class="input-field" data-i18n-placeholder="search_placeholder_number" placeholder="Enter certificate number..." autocomplete="off">
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> <span data-i18n="btn_search"></span></button>
+      </div>
+    </form>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/common.js"></script>
+<script src="js/search.js"></script>
+</body>
+</html>

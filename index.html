@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAWAH Verify — Certificate Verification System</title>
+<meta name="description" content="Verify the authenticity of certificates issued by NAWAH Medical Academy.">
+<link rel="icon" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+
+<section class="hero" id="hero-section">
+  <div class="logo-badge"><img src="images/logo.png" alt="NAWAH Medical Academy" class="dyn-logo"></div>
+  <h1 id="hero-title" data-i18n="hero_title"></h1>
+  <p class="subtitle" id="hero-subtitle" data-i18n="hero_subtitle"></p>
+
+  <form class="verify-box" id="home-verify-form">
+    <label for="cert-number-input" data-i18n="cert_number_label"></label>
+    <div class="input-row">
+      <input type="text" id="cert-number-input" class="input-field" data-i18n-placeholder="cert_number_placeholder" placeholder="e.g. NMH-2026-000001" autocomplete="off">
+      <button type="submit" class="btn btn-primary"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="btn_verify"></span></button>
+    </div>
+  </form>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="features_title"></h2>
+      <p data-i18n="features_subtitle"></p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon"><i class="fa-solid fa-bolt"></i></div>
+        <h3 data-i18n="f1_title"></h3>
+        <p data-i18n="f1_desc"></p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><i class="fa-solid fa-qrcode"></i></div>
+        <h3 data-i18n="f2_title"></h3>
+        <p data-i18n="f2_desc"></p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><i class="fa-solid fa-lock"></i></div>
+        <h3 data-i18n="f3_title"></h3>
+        <p data-i18n="f3_desc"></p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><i class="fa-solid fa-language"></i></div>
+        <h3 data-i18n="f4_title"></h3>
+        <p data-i18n="f4_desc"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#fff;">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="steps_title"></h2>
+      <p data-i18n="steps_subtitle"></p>
+    </div>
+    <div class="steps-row">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3 data-i18n="step1_title"></h3>
+        <p data-i18n="step1_desc" style="color:var(--nawah-text-muted);font-size:.9rem;"></p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3 data-i18n="step2_title"></h3>
+        <p data-i18n="step2_desc" style="color:var(--nawah-text-muted);font-size:.9rem;"></p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3 data-i18n="step3_title"></h3>
+        <p data-i18n="step3_desc" style="color:var(--nawah-text-muted);font-size:.9rem;"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="mission-section" style="display:none;">
+  <div class="container">
+    <div class="section-title">
+      <h2 id="mission-title"></h2>
+    </div>
+    <p id="mission-content" style="max-width:760px;margin:0 auto;text-align:center;color:var(--nawah-text-muted);line-height:1.8;"></p>
+  </div>
+</section>
+
+<section class="section" id="vision-section" style="background:#fff;display:none;">
+  <div class="container">
+    <div class="section-title">
+      <h2 id="vision-title"></h2>
+    </div>
+    <p id="vision-content" style="max-width:760px;margin:0 auto;text-align:center;color:var(--nawah-text-muted);line-height:1.8;"></p>
+  </div>
+</section>
+
+<section class="section" id="about-section" style="display:none;">
+  <div class="container">
+    <div class="about-section-grid">
+      <div>
+        <h2 id="about-title" style="color:var(--nawah-blue);font-weight:800;font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:16px;"></h2>
+        <div id="about-content" style="color:var(--nawah-text-muted);line-height:1.8;"></div>
+      </div>
+      <img id="about-image" src="" alt="About NAWAH Medical Academy" style="display:none;">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stats-section" style="background:#fff;display:none;">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="stats_section_title"></h2>
+    </div>
+    <div class="stats-grid" id="stats-grid" style="margin-top:36px;"></div>
+  </div>
+</section>
+
+<section class="section" id="courses-section" style="display:none;">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="courses_section_title"></h2>
+      <p data-i18n="courses_section_subtitle"></p>
+    </div>
+    <div class="features-grid" id="courses-grid"></div>
+  </div>
+</section>
+
+<section class="section" id="partners-section" style="background:#fff;display:none;">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="our_partners_title"></h2>
+      <p data-i18n="our_partners_subtitle"></p>
+    </div>
+    <div class="partners-slider" id="partners-slider"></div>
+  </div>
+</section>
+
+<section class="section" id="testimonials-section" style="display:none;">
+  <div class="container">
+    <div class="section-title">
+      <h2 data-i18n="testimonials_section_title"></h2>
+      <p data-i18n="testimonials_section_subtitle"></p>
+    </div>
+    <div class="testimonials-grid" id="testimonials-grid"></div>
+  </div>
+</section>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/common.js"></script>
+<script src="js/homepage.js"></script>
+</body>
+</html>

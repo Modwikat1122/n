@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAWAH Verify</title>
+<link rel="icon" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header" id="site-header"></header>
+<main class="cert-page">
+  <div class="cert-wrapper text-center" id="fallback-area">
+    <i class="fa-solid fa-circle-notch spin" style="font-size:2rem;color:var(--nawah-blue);"></i>
+  </div>
+</main>
+<footer class="site-footer" id="site-footer"></footer>
+<script src="js/i18n.js"></script>
+<script src="js/common.js"></script>
+<script>
+  renderSiteHeader('');
+  renderSiteFooter();
+  // Support deep links like /certificate/NMH-2026-000001 on static hosting:
+  // this custom 404 page inspects the requested path and redirects
+  // to certificate.html?number=... so verification still works.
+  (function(){
+    const path = window.location.pathname;
+    const match = path.match(/certificate\/([^/?#]+)/i);
+    if (match && match[1]) {
+      window.location.replace('certificate.html?number=' + encodeURIComponent(decodeURIComponent(match[1])));
+      return;
+    }
+    document.getElementById('fallback-area').innerHTML = `
+      <div class="cert-card">
+        <div class="cert-card-header notfound">
+          <div class="badge-icon">404</div>
+          <h2 data-i18n="cert_notfound"></h2>
+          <p data-i18n="cert_notfound_desc"></p>
+        </div>
+        <div class="cert-card-body text-center">
+          <a href="index.html" class="btn btn-primary"><i class="fa-solid fa-house"></i> <span data-i18n="btn_back_home"></span></a>
+        </div>
+      </div>`;
+    nawahApplyLang();
+  })();
+</script>
+</body>
+</html>

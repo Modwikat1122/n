@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — NAWAH Verify Admin</title>
+<link rel="icon" href="../images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar"></aside>
+  <div class="admin-main">
+    <header class="admin-topbar" id="admin-topbar"></header>
+    <main class="admin-content">
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background:var(--nawah-blue);"><i class="fa-solid fa-certificate"></i></div>
+          <div class="stat-info"><strong id="stat-total">--</strong><span data-i18n="stat_total"></span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:var(--nawah-green);"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="stat-info"><strong id="stat-active">--</strong><span data-i18n="stat_active"></span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:var(--nawah-red);"><i class="fa-solid fa-ban"></i></div>
+          <div class="stat-info"><strong id="stat-revoked">--</strong><span data-i18n="stat_revoked"></span></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:var(--nawah-amber);"><i class="fa-solid fa-calendar-days"></i></div>
+          <div class="stat-info"><strong id="stat-month">--</strong><span data-i18n="stat_month"></span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">
+          <h3 data-i18n="recent_activity"></h3>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-i18n="col_cert_number"></th>
+                <th data-i18n="col_date"></th>
+                <th data-i18n="col_browser"></th>
+                <th data-i18n="col_device"></th>
+                <th data-i18n="col_result"></th>
+              </tr>
+            </thead>
+            <tbody id="recent-activity-body">
+              <tr><td colspan="5" class="text-center" data-i18n="loading"></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/dashboard.js"></script>
+</body>
+</html>

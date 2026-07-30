@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings — NAWAH Verify Admin</title>
+<link rel="icon" href="../images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar"></aside>
+  <div class="admin-main">
+    <header class="admin-topbar" id="admin-topbar"></header>
+    <main class="admin-content">
+      <div class="panel" style="max-width:780px;">
+        <div class="panel-title">
+          <h3 data-i18n="settings_title"></h3>
+        </div>
+        <p style="color:var(--nawah-text-muted);margin-top:-8px;" data-i18n="settings_subtitle"></p>
+
+        <form id="settings-form" style="margin-top:20px;">
+          <input type="hidden" id="set-id-field">
+          <div class="form-grid">
+            <div class="form-group">
+              <label data-i18n="lbl_academy_name"></label>
+              <input type="text" id="set-academy-name" class="form-control">
+            </div>
+            <div class="form-group">
+              <label data-i18n="lbl_website"></label>
+              <input type="text" id="set-website" class="form-control">
+            </div>
+            <div class="form-group">
+              <label data-i18n="lbl_support_email"></label>
+              <input type="email" id="set-support-email" class="form-control">
+            </div>
+            <div class="form-group">
+              <label data-i18n="lbl_logo_url"></label>
+              <input type="text" id="set-logo-url" class="form-control" placeholder="images/logo.png">
+            </div>
+            <div class="form-group">
+              <label data-i18n="lbl_primary_color"></label>
+              <input type="color" id="set-primary-color" class="form-control" style="height:46px;padding:4px;">
+            </div>
+            <div class="form-group">
+              <label data-i18n="lbl_secondary_color"></label>
+              <input type="color" id="set-secondary-color" class="form-control" style="height:46px;padding:4px;">
+            </div>
+            <div class="form-group span-2">
+              <label data-i18n="lbl_footer_text"></label>
+              <textarea id="set-footer-text" class="form-control"></textarea>
+            </div>
+            <div class="form-group span-2">
+              <label data-i18n="lbl_cert_template"></label>
+              <select id="set-cert-template" class="form-control">
+                <option value="classic">Classic</option>
+                <option value="modern">Modern</option>
+                <option value="elegant">Elegant</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-actions" style="justify-content:flex-start;margin-top:24px;">
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> <span data-i18n="btn_save_settings"></span></button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/settings-admin.js"></script>
+</body>
+</html>

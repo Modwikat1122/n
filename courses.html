@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Courses Management — NAWAH Verify Admin</title>
+<link rel="icon" href="../images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar"></aside>
+  <div class="admin-main">
+    <header class="admin-topbar" id="admin-topbar"></header>
+    <main class="admin-content">
+      <div class="panel">
+        <div class="panel-title">
+          <h3 data-i18n="courses_title"></h3>
+          <button class="btn btn-green" id="add-course-btn"><i class="fa-solid fa-plus"></i> <span data-i18n="btn_add_course"></span></button>
+        </div>
+        <div class="table-toolbar">
+          <input type="text" id="course-search-input" class="input-field search-input" data-i18n-placeholder="quick_search_placeholder" placeholder="Search table...">
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-i18n="lbl_course_name"></th>
+                <th data-i18n="lbl_default_hours"></th>
+                <th data-i18n="lbl_instructor"></th>
+                <th data-i18n="col_actions"></th>
+              </tr>
+            </thead>
+            <tbody id="courses-table-body">
+              <tr><td colspan="4" class="text-center" data-i18n="loading"></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="course-modal-overlay">
+  <div class="modal-box">
+    <h3 id="course-modal-title" data-i18n="btn_add_course"></h3>
+    <form id="course-form">
+      <input type="hidden" id="c-id-field">
+      <div class="form-grid">
+        <div class="form-group">
+          <label data-i18n="lbl_course_name"></label>
+          <input type="text" id="c-course-name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_default_hours"></label>
+          <input type="number" id="c-default-hours" class="form-control" min="0">
+        </div>
+        <div class="form-group span-2">
+          <label data-i18n="lbl_instructor"></label>
+          <input type="text" id="c-instructor" class="form-control">
+        </div>
+        <div class="form-group span-2">
+          <label data-i18n="lbl_description"></label>
+          <textarea id="c-description" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline" id="course-modal-cancel" data-i18n="btn_cancel"></button>
+        <button type="submit" class="btn btn-primary" data-i18n="btn_save"></button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/courses-admin.js"></script>
+</body>
+</html>

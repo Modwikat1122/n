@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Students Management — NAWAH Verify Admin</title>
+<link rel="icon" href="../images/logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar"></aside>
+  <div class="admin-main">
+    <header class="admin-topbar" id="admin-topbar"></header>
+    <main class="admin-content">
+      <div class="panel">
+        <div class="panel-title">
+          <h3 data-i18n="students_title"></h3>
+          <button class="btn btn-green" id="add-student-btn"><i class="fa-solid fa-plus"></i> <span data-i18n="btn_add_student"></span></button>
+        </div>
+        <div class="table-toolbar">
+          <input type="text" id="student-search-input" class="input-field search-input" data-i18n-placeholder="quick_search_placeholder" placeholder="Search table...">
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-i18n="lbl_student_name"></th>
+                <th data-i18n="lbl_email"></th>
+                <th data-i18n="lbl_phone"></th>
+                <th data-i18n="lbl_national_id"></th>
+                <th data-i18n="col_actions"></th>
+              </tr>
+            </thead>
+            <tbody id="students-table-body">
+              <tr><td colspan="5" class="text-center" data-i18n="loading"></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="student-modal-overlay">
+  <div class="modal-box">
+    <h3 id="student-modal-title" data-i18n="btn_add_student"></h3>
+    <form id="student-form">
+      <input type="hidden" id="s-id-field">
+      <div class="form-grid">
+        <div class="form-group">
+          <label data-i18n="lbl_student_name"></label>
+          <input type="text" id="s-full-name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_email"></label>
+          <input type="email" id="s-email" class="form-control">
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_phone"></label>
+          <input type="text" id="s-phone" class="form-control">
+        </div>
+        <div class="form-group">
+          <label data-i18n="lbl_national_id"></label>
+          <input type="text" id="s-national-id" class="form-control">
+        </div>
+        <div class="form-group span-2">
+          <label data-i18n="lbl_notes"></label>
+          <textarea id="s-notes" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-outline" id="student-modal-cancel" data-i18n="btn_cancel"></button>
+        <button type="submit" class="btn btn-primary" data-i18n="btn_save"></button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/students-admin.js"></script>
+</body>
+</html>
