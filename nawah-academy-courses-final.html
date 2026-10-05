@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نواة | NAWAH Medical Academy</title>
+
+<link rel="icon" href="https://drive.google.com/thumbnail?id=1h2eHRyXs70-lJKBR3TKCxgaf7t1mXQTG&sz=w1000" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* Course details modal — added without changing the existing site design */
+.course-grid{align-items:stretch}
+.course-card{height:100%;display:flex;flex-direction:column}
+.course-info{height:100%;display:flex;flex-direction:column}
+.course-info .course-meta{margin-top:auto}
+.course-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.course-actions .course-link{flex:1;min-width:140px}
+.course-link.alt{display:inline-flex;justify-content:center;align-items:center;text-decoration:none}
+
+.course-modal{position:fixed;inset:0;background:rgba(5,25,43,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+.course-modal.show{display:flex}
+.course-modal-box{width:min(780px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:24px;box-shadow:0 25px 80px rgba(0,0,0,.28);position:relative}
+.course-modal-head{padding:28px 30px 22px;background:linear-gradient(135deg,#123b5d,#0f7f80);color:#fff}
+.course-modal-head .modal-tag{display:inline-flex;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.15);font-size:12px;margin-bottom:12px}
+.course-modal-head h3{margin:0;font-size:26px;line-height:1.45}
+.course-modal-head p{margin:10px 0 0;opacity:.9;line-height:1.8}
+.course-modal-close{position:absolute;top:18px;left:18px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;cursor:pointer;font-size:17px}
+.course-modal-body{padding:26px 30px}
+.modal-info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:24px}
+.modal-info-item{padding:13px 15px;border:1px solid #e7edf1;border-radius:14px;background:#f8fafb}
+.modal-info-item i{color:#0f8f91;margin-left:7px}
+.modal-section{margin-top:22px}
+.modal-section h4{margin:0 0 12px;color:#123b5d;font-size:18px}
+.modal-list{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.modal-list li{display:flex;gap:9px;line-height:1.7;color:#4d5d68}
+.modal-list li i{color:#159b8f;margin-top:5px}
+.modal-note{margin-top:20px;padding:15px 17px;border-radius:14px;background:#eef8f7;color:#155d5d;line-height:1.8}
+.modal-register{display:flex;gap:10px;margin-top:24px}
+.modal-register a{flex:1;text-align:center;text-decoration:none}
+@media(max-width:600px){
+  .course-modal{padding:10px}
+  .course-modal-head,.course-modal-body{padding:22px 18px}
+  .course-modal-head h3{font-size:21px}
+  .modal-info-grid{grid-template-columns:1fr}
+  .modal-register{flex-direction:column}
+}
+</style>
+</head>
+
+<body data-page="home">
+
+<header class="nav-wrap">
+  <a class="brand" href="index.html">
+    <img src="https://drive.google.com/thumbnail?id=1h2eHRyXs70-lJKBR3TKCxgaf7t1mXQTG&sz=w1000" alt="نواة">
+    <span><b>نواة</b><small>NAWAH MEDICAL ACADEMY</small></span>
+  </a>
+
+  <nav>
+    <a class="active" href="#home">الرئيسية</a>
+    <a href="#course">الدورات</a>
+    <a href="#about">عن نواة</a>
+    <a href="#contact">تواصل</a>
+  </nav>
+
+  <a class="verify-link" href="ver.html">
+    <i class="fa-solid fa-shield-heart"></i> Verify Certificate
+  </a>
+</header>
+
+<main>
+
+<section id="home" class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span></span> تدريب طبي عملي بمعايير احترافية</p>
+      <h1>تعلّم الطب<br><em>بإيدك.</em></h1>
+      <p class="lead">نواة أكاديمية تدريب طبي تقدّم برامج عملية حقيقية؛ تتعلم المهارة، تطبّقها، وتخرج بثقة.</p>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="#course">استعرض الدورات <i class="fa-solid fa-arrow-left"></i></a>
+        <a class="btn ghost" href="#about">تعرف علينا</a>
+      </div>
+
+      <div class="trust-line">
+        <span><i class="fa-solid fa-hand-holding-heart"></i> تدريب عملي</span>
+        <span><i class="fa-solid fa-certificate"></i> شهادات موثّقة</span>
+        <span><i class="fa-solid fa-users"></i> برامج متنوعة</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-label="NAWAH Medical Academy">
+      <div class="orbit orbit-a"></div>
+      <div class="orbit orbit-b"></div>
+      <div class="glass-card top-card">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <span>Hands-on<br>Training</span>
+      </div>
+
+      <div class="logo-halo">
+        <img src="https://drive.google.com/thumbnail?id=1h2eHRyXs70-lJKBR3TKCxgaf7t1mXQTG&sz=w1000" alt="شعار نواة">
+      </div>
+
+      <div class="glass-card bottom-card">
+        <b>03</b>
+        <span>برامج تدريبية<br>متنوعة</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-strip">
+  <div><b>+5</b><span>دفعات تدريبية</span></div>
+  <div><b>100%</b><span>تطبيق عملي</span></div>
+  <div><b>03</b><span>برامج تدريبية</span></div>
+  <div><b>∞</b><span>شغف بالتعلّم</span></div>
+</section>
+
+<section id="course" class="section course-section">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow dark"><span></span> برامجنا التدريبية</p>
+      <h2>مهارات تنقذ حياة.</h2>
+    </div>
+    <p>اختر البرنامج المناسب لك، تعرّف على التفاصيل والمحاور، ثم سجّل مباشرة.</p>
+  </div>
+
+  <div class="course-grid">
+
+    <!-- Course 1 -->
+    <article class="course-card">
+      <div class="course-visual">
+        <div class="course-icon"><i class="fa-solid fa-kit-medical"></i></div>
+        <span class="course-label">NAWAH<br>SKILLS</span>
+      </div>
+
+      <div class="course-info">
+        <span class="pill">مهارات عملية</span>
+        <h3>دورة المهارات العملية الشاملة</h3>
+        <p>تدريب عملي مكثف للطلاب والخريجين والعاملين في المجال الصحي، بهدف فهم المهارة وتطبيقها بثقة.</p>
+
+        <div class="course-meta">
+          <span><i class="fa-regular fa-clock"></i> 9:00 – 3:00</span>
+          <span><i class="fa-solid fa-location-dot"></i> شارع الجامعة الأردنية</span>
+          <span><i class="fa-solid fa-tag"></i> 15 JOD بدل 25</span>
+          <span><i class="fa-solid fa-certificate"></i> شهادة حضور</span>
+        </div>
+
+        <div class="course-actions">
+          <button class="course-link" onclick="openCourse('skills')">عرض التفاصيل <i class="fa-solid fa-arrow-left"></i></button>
+          <a class="course-link alt" href="https://forms.gle/eVTZHaDg1ZpzetYM6" target="_blank" rel="noopener">سجّل الآن</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Course 2 -->
+    <article class="course-card">
+      <div class="course-visual writing">
+        <div class="course-icon"><i class="fa-solid fa-user-nurse"></i></div>
+        <span class="course-label">NAWAH<br>FOUNDATIONS</span>
+      </div>
+
+      <div class="course-info">
+        <span class="pill">تطوير مهني</span>
+        <h3>Nursing Foundations &amp; Clinical Readiness Course</h3>
+        <p>برنامج يساعد طالب التمريض على فهم التخصص، تطوير المهارات الأساسية، والبدء بثقة في الدراسة والتدريب السريري.</p>
+
+        <div class="course-meta">
+          <span><i class="fa-regular fa-calendar"></i> 6–7/10</span>
+          <span><i class="fa-regular fa-clock"></i> 5:00 – 7:30</span>
+          <span><i class="fa-solid fa-tag"></i> 4 JOD</span>
+          <span><i class="fa-solid fa-certificate"></i> شهادة إتمام</span>
+        </div>
+
+        <div class="course-actions">
+          <button class="course-link" onclick="openCourse('foundations')">عرض التفاصيل <i class="fa-solid fa-arrow-left"></i></button>
+          <a class="course-link alt" href="https://forms.gle/ofAGfaPsueEA282u7" target="_blank" rel="noopener">سجّل الآن</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Course 3 -->
+    <article class="course-card">
+      <div class="course-visual documentation">
+        <div class="course-icon"><i class="fa-solid fa-file-pen"></i></div>
+        <span class="course-label">NAWAH<br>DOCUMENTATION</span>
+      </div>
+
+      <div class="course-info">
+        <span class="pill">Online</span>
+        <h3>Professional Writing &amp; Nursing Documentation Course</h3>
+        <p>تطوير مهارات الكتابة المهنية والتوثيق التمريضي والتعامل مع السجلات والوثائق السريرية بدقة واحترافية.</p>
+
+        <div class="course-meta">
+          <span><i class="fa-regular fa-calendar"></i> 29–30/09</span>
+          <span><i class="fa-solid fa-video"></i> Online</span>
+          <span><i class="fa-regular fa-clock"></i> 5:00 – 7:00</span>
+          <span><i class="fa-solid fa-certificate"></i> شهادة إتمام</span>
+        </div>
+
+        <div class="course-actions">
+          <button class="course-link" onclick="openCourse('documentation')">عرض التفاصيل <i class="fa-solid fa-arrow-left"></i></button>
+          <a class="course-link alt" href="https://forms.gle/oadhK3u8jSbt4sHbA" target="_blank" rel="noopener">سجّل الآن</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="about" class="section why-section">
+  <div class="why-logo">
+    <img src="https://drive.google.com/thumbnail?id=1h2eHRyXs70-lJKBR3TKCxgaf7t1mXQTG&sz=w1000" alt="نواة">
+  </div>
+
+  <div>
+    <p class="eyebrow dark"><span></span> لماذا نواة؟</p>
+    <h2>لأن المهارة لا تُحفظ،<br>المهارة <em>تُمارس.</em></h2>
+    <p class="lead muted">نبني تجربة تعليمية قريبة من الواقع، بتفاصيل صغيرة تصنع فرقًا كبيرًا في ثقة المتدرب وقدرته على التصرف.</p>
+
+    <div class="feature-list">
+      <div><i class="fa-solid fa-stethoscope"></i><span><b>محتوى متخصص</b><small>مصمم لاحتياجات التدريب الطبي الحقيقي</small></span></div>
+      <div><i class="fa-solid fa-people-group"></i><span><b>تعلّم تفاعلي</b><small>مشاركة، تطبيق، ومتابعة مباشرة</small></span></div>
+      <div><i class="fa-solid fa-award"></i><span><b>شهادات موثّقة</b><small>QR Code للتحقق من كل شهادة</small></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="partners-section">
+  <p class="partners-title">شركاؤنا في النجاح</p>
+
+  <div class="partners-track">
+    <div class="partners-slider">
+      <img src="https://drive.google.com/thumbnail?id=1go61ypwEThJ9TsIWAbivt3vV_xgcY9ns&sz=w1000">
+      <img src="https://drive.google.com/thumbnail?id=1BHlvuebezKP2DMYgBER4vQ2z_c3wuAbL&sz=w1000">
+      <img src="https://drive.google.com/thumbnail?id=1TmnziKchO1iqZ_8LO7Y-r6s6mSuFIQ8V&sz=w1000">
+
+      <img src="https://drive.google.com/thumbnail?id=1go61ypwEThJ9TsIWAbivt3vV_xgcY9ns&sz=w1000">
+      <img src="https://drive.google.com/thumbnail?id=1BHlvuebezKP2DMYgBER4vQ2z_c3wuAbL&sz=w1000">
+      <img src="https://drive.google.com/thumbnail?id=1TmnziKchO1iqZ_8LO7Y-r6s6mSuFIQ8V&sz=w1000">
+    </div>
+  </div>
+</section>
+
+<section class="verify-banner">
+  <div>
+    <p>لديك شهادة من نواة؟</p>
+    <h2>تأكد من صحتها خلال ثوانٍ.</h2>
+  </div>
+  <a class="btn light" href="ver.html">تحقق من الشهادة <i class="fa-solid fa-arrow-left"></i></a>
+</section>
+
+</main>
+
+<footer id="contact">
+  <div class="footer-brand">
+    <img src="https://drive.google.com/thumbnail?id=1h2eHRyXs70-lJKBR3TKCxgaf7t1mXQTG&sz=w1000" alt="نواة">
+    <div><b>نواة</b><span>NAWAH MEDICAL ACADEMY</span></div>
+  </div>
+  <p>أكاديمية تدريب طبي عملي، نصنع فيها الثقة قبل الشهادة.</p>
+  <div class="footer-links"><a href="ver.html">Verify Certificate</a></div>
+  <small>© 2026 NAWAH Medical Academy. جميع الحقوق محفوظة.</small>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/" target="_blank" rel="noopener" title="تواصل معنا عبر واتساب">
+  <i class="fa-brands fa-whatsapp"></i><span>تواصل معنا</span>
+</a>
+
+<!-- Course Details Modal -->
+<div class="course-modal" id="courseModal" onclick="closeCourse(event)">
+  <div class="course-modal-box" onclick="event.stopPropagation()">
+    <div class="course-modal-head">
+      <button class="course-modal-close" onclick="closeCourse()" aria-label="إغلاق"><i class="fa-solid fa-xmark"></i></button>
+      <span class="modal-tag" id="modalTag"></span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDescription"></p>
+    </div>
+    <div class="course-modal-body">
+      <div class="modal-info-grid" id="modalInfo"></div>
+
+      <div class="modal-section">
+        <h4>محاور الدورة</h4>
+        <ul class="modal-list" id="modalTopics"></ul>
+      </div>
+
+      <div class="modal-note" id="modalNote"></div>
+
+      <div class="modal-register">
+        <a id="modalForm" class="btn primary" target="_blank" rel="noopener">سجّل الآن <i class="fa-solid fa-arrow-left"></i></a>
+        <button class="btn ghost" onclick="closeCourse()">إغلاق</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const courses = {
+  skills: {
+    tag: "مهارات عملية",
+    title: "دورة المهارات العملية الشاملة",
+    description: "دورة عملية تجمع أهم المهارات الأساسية التي يحتاجها طالب أو خريج المجال الصحي، مع التركيز على الفهم والتطبيق العملي.",
+    info: [
+      ["fa-clock", "9:00 صباحًا – 3:00 مساءً"],
+      ["fa-location-dot", "شارع الجامعة الأردنية"],
+      ["fa-tag", "15 JOD بدل 25 JOD"],
+      ["fa-certificate", "شهادة حضور موثقة"]
+    ],
+    topics: [
+      "BLS — Basic Life Support",
+      "First Aid — الإسعافات الأولية",
+      "Phlebotomy — سحب الدم",
+      "Injection Techniques — تقنيات الحقن",
+      "IV Cannulation — تركيب القنية الوريدية"
+    ],
+    note: "هدية للمسجلين: دورة NAWAH Rhythm في أساسيات ECG لمدة ساعة أونلاين عبر Google Meet، مع شهادة حضور موثقة من منصة نحنُ، بالإضافة إلى دورة مزاولة المهنة مجانًا حسب التخصص.",
+    form: "https://forms.gle/eVTZHaDg1ZpzetYM6"
+  },
+
+  foundations: {
+    tag: "Nursing Development",
+    title: "Nursing Foundations & Clinical Readiness Course",
+    description: "برنامج مصمم لمساعدة طالب التمريض على فهم تخصصه والبدء في الدراسة والتدريب السريري بثقة أكبر، من خلال محتوى عملي وتفاعلي.",
+    info: [
+      ["fa-calendar", "الثلاثاء – الأربعاء | 6–7/10"],
+      ["fa-clock", "5:00 – 7:30 مساءً"],
+      ["fa-hourglass-half", "5 ساعات تدريبية"],
+      ["fa-tag", "4 JOD"],
+      ["fa-certificate", "شهادة إتمام موثقة"]
+    ],
+    topics: [
+      "أساسيات مهنة التمريض ودور الممرض",
+      "المصطلحات الطبية الأساسية",
+      "خارطة سنوات دراسة التمريض",
+      "أهم المهارات التمريضية والسريرية",
+      "التواصل الفعال وسلامة المريض",
+      "Case Simulation + ABCDE + SBAR",
+      "استراتيجيات فهم وتحليل أسئلة التمريض"
+    ],
+    note: "البرنامج تفاعلي ويعتمد على الأمثلة والحالات الواقعية لمساعدة الطالب على ربط المعلومات بالممارسة السريرية.",
+    form: "https://forms.gle/ofAGfaPsueEA282u7"
+  },
+
+  documentation: {
+    tag: "Professional Nursing Skills",
+    title: "Professional Writing & Nursing Documentation Course",
+    description: "دورة متخصصة للممرضين وطلاب التمريض لتطوير مهارات الكتابة المهنية والتوثيق التمريضي والتعامل مع السجلات والوثائق السريرية بدقة واحترافية.",
+    info: [
+      ["fa-calendar", "الثلاثاء والأربعاء | 29–30/09"],
+      ["fa-clock", "5:00 – 7:00 مساءً"],
+      ["fa-video", "Online"],
+      ["fa-certificate", "شهادة إتمام موثقة"]
+    ],
+    topics: [
+      "أساسيات التوثيق التمريضي",
+      "Nursing Notes & Reports",
+      "Incident Reports",
+      "Case Studies",
+      "التوثيق السريري",
+      "Electronic Health Records — Hakeem",
+      "Professional Medical Writing",
+      "التوثيق القانوني والأخلاقي",
+      "تطبيقات عملية على التوثيق والكتابة التمريضية",
+      "توثيق الخبرات والمهارات المهنية"
+    ],
+    note: "المدرب: عمرو مطاحن — ممرض ومدرب مهتم بتطوير المهارات المهنية لطلاب وخريجي التمريض، ومؤسس مبادرة أوكسجين.",
+    form: "https://forms.gle/oadhK3u8jSbt4sHbA"
+  }
+};
+
+function openCourse(id){
+  const course = courses[id];
+  if(!course) return;
+
+  document.getElementById("modalTag").textContent = course.tag;
+  document.getElementById("modalTitle").textContent = course.title;
+  document.getElementById("modalDescription").textContent = course.description;
+
+  document.getElementById("modalInfo").innerHTML = course.info.map(item =>
+    `<div class="modal-info-item"><i class="fa-solid ${item[0]}"></i>${item[1]}</div>`
+  ).join("");
+
+  document.getElementById("modalTopics").innerHTML = course.topics.map(topic =>
+    `<li><i class="fa-solid fa-circle-check"></i><span>${topic}</span></li>`
+  ).join("");
+
+  document.getElementById("modalNote").textContent = course.note;
+  document.getElementById("modalForm").href = course.form;
+
+  document.getElementById("courseModal").classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+function closeCourse(event){
+  if(event && event.target !== document.getElementById("courseModal")) return;
+  document.getElementById("courseModal").classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    document.getElementById("courseModal").classList.remove("show");
+    document.body.style.overflow = "";
+  }
+});
+</script>
+
+<script src="js/app.js"></script>
+</body>
+</html>
